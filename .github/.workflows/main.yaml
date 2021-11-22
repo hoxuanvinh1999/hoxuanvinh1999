@@ -31,6 +31,7 @@ jobs:
           OPEN_WEATHER_MAP_KEY: ${{secrets.OPEN_WEATHER_MAP_KEY}}
       - name: Commit and push new README.md
         run: |-
+          git add .
           git diff
           git config --global user.email hoxuanvinh1999@gmail.com
           git config --global user.name hoxuanvinh1999
