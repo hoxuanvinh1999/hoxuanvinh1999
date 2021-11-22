@@ -23,4 +23,9 @@ function generateReadMe() {
     fs.writeFileSync('README.md', output);
   });
 }
-generateReadMe();
+
+async function action() {
+  await generateReadMe();
+}
+
+action();
