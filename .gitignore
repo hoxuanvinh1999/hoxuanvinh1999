@@ -1,1 +1,6 @@
 .env
+.env.local
+.env.development
+
+# ignore
+node_modules/*
