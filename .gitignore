@@ -1,1 +1,7 @@
 .env
+.env.local
+.env.development
+
+
+.github
+.vscode

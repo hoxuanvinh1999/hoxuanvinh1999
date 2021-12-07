@@ -2,9 +2,10 @@
   "name": "hoxuanvinh1999",
   "version": "1.0.0",
   "description": "<!-- **hoxuanvinh1999/hoxuanvinh1999** is a ✨ _special_ ✨ repository because its `README.md` (this file) appears on your GitHub profile.",
-  "main": "updateReadme.js",
+  "main": "index.ts",
   "scripts": {
-    "test": "echo \"Error: no test specified\" && exit 1"
+    "test": "echo \"Error: no test specified\" && exit 1",
+    "start": "tsc index.ts && node index.js"
   },
   "repository": {
     "type": "git",
@@ -20,5 +21,9 @@
     "dotenv": "^10.0.0",
     "mustache": "^4.2.0",
     "node-fetch": "^3.1.0"
+  },
+  "devDependencies": {
+    "@types/mustache": "^4.1.2",
+    "@types/node": "^16.11.12"
   }
 }
