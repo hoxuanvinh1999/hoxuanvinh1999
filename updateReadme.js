@@ -1,20 +1,20 @@
 // Include node fs (file stream) and https modules
-const fs = require('fs');
-const https = require('https');
-
+const fs = require("fs");
+const https = require("https");
+const username = "hoxuanvinh1999";
 // API endpoint
-const url = 'https://dev.to/api/articles?username=<hoxuanvinh1999>';
+const url = `https://dev.to/api/articles?username=<${username}>`;
 
-function readWriteAsync() {
+export default function readWriteAsync() {
   // Get articles using HTTPS
   https.get(url, (res) => {
-    res.setEncoding('utf8');
+    res.setEncoding("utf8");
 
     // Set variable body to response data from API
-    let body = '';
-    res.on('data', (data) => body += data);
+    let body = "";
+    res.on("data", (data) => (body += data));
 
-    res.on('end', () => {
+    res.on("end", () => {
       // Parse the JSON response
       body = JSON.parse(body);
 
@@ -25,7 +25,7 @@ function readWriteAsync() {
       const articles = `\n - [${body[0].title}](${body[0].url})\n - [${body[1].title}](${body[1].url})\n - [${body[2].title}](${body[2].url})\n \n`;
 
       // Update README using FS
-      fs.readFile('README.md', 'utf-8', (err, data) => {
+      fs.readFile("README.md", "utf-8", (err, data) => {
         if (err) {
           throw err;
         }
@@ -38,17 +38,14 @@ function readWriteAsync() {
         );
 
         // Write the new README
-        fs.writeFile('README.md', updatedMd, 'utf-8', (err) => {
-          if (err) { 
+        fs.writeFile("README.md", updatedMd, "utf-8", (err) => {
+          if (err) {
             throw err;
           }
 
-          console.log('README update complete.');
+          console.log("README update complete.");
         });
       });
     });
   });
 }
-
-// Call the function
-readWriteAsync();
