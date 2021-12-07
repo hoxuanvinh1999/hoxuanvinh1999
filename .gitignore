@@ -2,8 +2,6 @@
 .env.local
 .env.development
 
-# ignore
-node_modules
 
 .github
 .vscode
