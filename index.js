@@ -81,7 +81,7 @@ switch (special) {
     default:
         special = "";
 }
-var DATA = {
+var set = {
     special: special,
     name: "Ho Xuan Vinh",
     date: new Date().toLocaleDateString("en-FR", {
@@ -98,8 +98,10 @@ function action() {
     fs.readFile(MUSTACHE_MAIN_DIR, function (err, data) {
         if (err)
             throw err;
-        var output = Mustache === null || Mustache === void 0 ? void 0 : Mustache.render(data.toString(), DATA);
+        var output = Mustache === null || Mustache === void 0 ? void 0 : Mustache.render(data.toString(), set);
         fs === null || fs === void 0 ? void 0 : fs.writeFileSync("README.md", output);
+        if (output === undefined)
+            throw new Error("Error"); //throw error
     });
 }
 action();

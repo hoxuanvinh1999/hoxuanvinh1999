@@ -44,7 +44,7 @@ switch (special) {
     special = "";
 }
 
-let DATA = {
+const set = {
   special: special,
   name: "Ho Xuan Vinh",
   date: new Date().toLocaleDateString("en-FR", {
@@ -60,8 +60,9 @@ let DATA = {
 function action() {
   fs.readFile(MUSTACHE_MAIN_DIR, (err: any, data: any) => {
     if (err) throw err;
-    const output = Mustache?.render(data.toString(), DATA);
+    const output = Mustache?.render(data.toString(), set);
     fs?.writeFileSync("README.md", output as string);
+    if (output === undefined) throw new Error("Error"); //throw error
   });
 }
 action();
