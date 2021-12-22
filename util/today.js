@@ -36,72 +36,13 @@ var __generator = (this && this.__generator) || function (thisArg, body) {
     }
 };
 exports.__esModule = true;
-var Mustache = require("mustache");
-var fs = require("fs");
-var MUSTACHE_MAIN_DIR = "./main.mustache";
-function isToday(dateParameter) {
-    return __awaiter(this, void 0, void 0, function () {
-        var today;
-        return __generator(this, function (_a) {
-            today = new Date();
-            return [2 /*return*/, (dateParameter.getDate() === today.getDate() &&
-                    dateParameter.getMonth() === today.getMonth())];
-        });
+exports.isToday = void 0;
+var isToday = function (dateParameter) { return __awaiter(void 0, void 0, void 0, function () {
+    var today;
+    return __generator(this, function (_a) {
+        today = new Date();
+        return [2 /*return*/, (dateParameter.getDate() === today.getDate() &&
+                dateParameter.getMonth() === today.getMonth())];
     });
-}
-var special = "";
-switch (special) {
-    case isToday(new Date("01-01-2000")):
-        special = "Happy New Year to me !!!";
-        break;
-    case isToday(new Date("02-21-2000")):
-        special = "Happy Birthday to my mother !!!";
-        break;
-    case isToday(new Date("03-01-2000")):
-        special = "Happy Birthday to my father !!!";
-        break;
-    case isToday(new Date("06-03-2000")):
-        special = "Happy Birthday to my brother !!!";
-        break;
-    case isToday(new Date("11-07-2000")):
-        special = "Happy Birthday to Tam-sensei !!!";
-        break;
-    case isToday(new Date("08-02-2000")):
-        special = "Happy Birthday to Trs !!!";
-        break;
-    case isToday(new Date("01-12-2000")):
-        special = "Happy Birthday to Buu !!!";
-        break;
-    case isToday(new Date("11-24-2000")):
-        special = "Happy Birthday to Cat !!!";
-        break;
-    case isToday(new Date("02-19-2000")):
-        special = "Happy Birthday to you !!!";
-        break;
-    default:
-        special = "";
-}
-var set = {
-    special: special,
-    name: "Ho Xuan Vinh",
-    date: new Date().toLocaleDateString("en-FR", {
-        weekday: "long",
-        month: "long",
-        day: "numeric",
-        hour: "numeric",
-        minute: "numeric",
-        timeZoneName: "short",
-        timeZone: "Europe/Stockholm"
-    })
-};
-function action() {
-    fs.readFile(MUSTACHE_MAIN_DIR, function (err, data) {
-        if (err)
-            throw err;
-        var output = Mustache === null || Mustache === void 0 ? void 0 : Mustache.render(data.toString(), set);
-        fs === null || fs === void 0 ? void 0 : fs.writeFileSync("README.md", output);
-        if (output === undefined)
-            throw new Error("Error"); //throw error
-    });
-}
-action();
+}); };
+exports.isToday = isToday;

@@ -1,15 +1,7 @@
 import Mustache = require("mustache");
 import fs = require("fs");
 const MUSTACHE_MAIN_DIR = "./main.mustache";
-
-async function isToday(dateParameter: any): Promise<boolean> {
-  const today = new Date();
-  return (
-    dateParameter.getDate() === today.getDate() &&
-    dateParameter.getMonth() === today.getMonth()
-  );
-}
-
+import { isToday } from "./util/today";
 let special = "";
 
 switch (special) {
@@ -44,25 +36,24 @@ switch (special) {
     special = "";
 }
 
-const set = {
-  special: special,
-  name: "Ho Xuan Vinh",
-  date: new Date().toLocaleDateString("en-FR", {
-    weekday: "long",
-    month: "long",
-    day: "numeric",
-    hour: "numeric",
-    minute: "numeric",
-    timeZoneName: "short",
-    timeZone: "Europe/Stockholm",
-  }),
-};
-function action() {
+export const Generate = () => {
+  const set = {
+    special: special,
+    name: "Ho Xuan Vinh",
+    date: new Date().toLocaleDateString("en-FR", {
+      weekday: "long",
+      month: "long",
+      day: "numeric",
+      hour: "numeric",
+      minute: "numeric",
+      timeZoneName: "short",
+      timeZone: "Europe/Stockholm",
+    }),
+  };
   fs.readFile(MUSTACHE_MAIN_DIR, (err: any, data: any) => {
     if (err) throw err;
     const output = Mustache?.render(data.toString(), set);
     fs?.writeFileSync("README.md", output as string);
-    if (output === undefined) throw new Error("Error"); //throw error
+    if (output === undefined) throw new Error("Error");
   });
-}
-action();
+};

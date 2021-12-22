@@ -5,7 +5,7 @@ const username = "hoxuanvinh1999";
 
 const url = `https://dev.to/api/articles?username=<${username}>`;
 
-export default function readWriteAsync() {
+export const readWrite = async () => {
   https.get(url, (res) => {
     res.setEncoding("utf8");
     let body = "" as any;
@@ -37,4 +37,4 @@ export default function readWriteAsync() {
       });
     });
   });
-}
+};
