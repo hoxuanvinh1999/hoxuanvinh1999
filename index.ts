@@ -57,7 +57,6 @@ let DATA = {
     timeZone: "Europe/Stockholm",
   }),
 };
-console.log(DATA);
 function action() {
   fs.readFile(MUSTACHE_MAIN_DIR, (err: any, data: any) => {
     if (err) throw err;

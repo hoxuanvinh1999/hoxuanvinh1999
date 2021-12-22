@@ -94,7 +94,6 @@ var DATA = {
         timeZone: "Europe/Stockholm"
     })
 };
-console.log(DATA);
 function action() {
     fs.readFile(MUSTACHE_MAIN_DIR, function (err, data) {
         if (err)
